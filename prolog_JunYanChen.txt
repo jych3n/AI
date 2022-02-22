@@ -1,0 +1,21 @@
+star(sol).
+orbits(mercury,sol).
+orbits(venus,sol).
+orbits(earth,sol).
+orbits(mars,sol).
+orbits(jupiter,sol).
+orbits(moon,earth).
+orbits(sputnik,earth).
+orbits(phobos,mars).
+orbits(deimos,mars).
+orbits(io,jupiter).
+has_water(earth).
+has_water(mars).
+has_water(moon).
+is_planet(X):-orbits(X,Y),star(Y).
+is_satellite(X):-orbits(X,Y),is_planet(Y).
+is_not_artificial_satelite(X):-is_satellite(X),has_water(X).
+subordinate(X,Y):-orbits(X,Y),orbits(Y,_). #not sure about this one
+milkyway(X):-orbits(X,sol).
+star(sirius).
+star(canopus).
